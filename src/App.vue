@@ -24,13 +24,30 @@
 <style scoped>
 nav {
   width: 100%;
-  height: 60px;
-  background-color: #1e1e1e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100px;
   font-family: 'Pixelify Sans', sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.nav-container {
+  width: 100%;
+  height: 80%;
+  background-color: #282828;
+  display: flex;
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center the whole group */
+  gap: 20rem; /* Space between items */
+}
+
+.nav-button a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem 1rem;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 </style>
-
-<script setup lang="ts"></script>
