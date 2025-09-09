@@ -1,55 +1,3 @@
-<template>
-  <!-- navbar -->
-  <nav class="navbar-wrapper">
-    <div class="navbar">
-      <div class="navbar-item">
-        <a href="#">Home</a>
-      </div>
-
-      <div class="site-title">
-        <div class="title-animation">
-          <h1
-            ref="rainbowTitle"
-            :class="{ rainbow: isRainbow }"
-            @mouseenter="startRainbow"
-            @mouseleave="stopRainbow"
-          >
-            PixelPlace
-          </h1>
-        </div>
-      </div>
-
-      <div class="navbar-item">
-        <a href="#">Login</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- main content -->
-  <main class="main-content">
-    <div class="search-bar">
-      <input type="search" placeholder="Search..." />
-      <a href="#">Create Canvas</a>
-    </div>
-
-    <div class="lobby-list">
-      <div class="lobby-item">
-        <span>Lobby #1</span>
-        <button class="lobby-join-btn">Join</button>
-      </div>
-      <div class="lobby-item">
-        <span>Lobby #2</span>
-        <button class="lobby-join-btn">Join</button>
-      </div>
-      <div class="lobby-item">
-        <span>Lobby #3 <span class="lobby-lock">🔒</span></span>
-        <button class="lobby-join-btn">Join</button>
-      </div>
-    </div>
-  </main>
-</template>
-
-<style scoped>
 /* navbar */
 nav {
   width: 100vw;
@@ -155,13 +103,6 @@ nav {
   transition: 300ms;
 }
 
-.main-content {
-  margin-top: 5vw;
-  margin-right: 7vw;
-  margin-bottom: 5vw;
-  margin-left: 7vw;
-}
-
 /* search bar */
 .search-bar {
   display: flex;
@@ -218,7 +159,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.5rem;
 }
 
@@ -241,37 +182,4 @@ nav {
 .lobby-lock {
   font-size: 1.2rem;
   margin-left: 0.5rem;
-  margin-right: auto;
 }
-</style>
-
-<script setup>
-import { ref } from 'vue'
-
-const isRainbow = ref(false)
-
-const rainbowTitle = ref(null)
-
-function startRainbow() {
-  isRainbow.value = true
-}
-
-function stopRainbow() {
-  if (rainbowTitle.value) {
-    // Get computed color at the end of animation
-    const computedColor = getComputedStyle(rainbowTitle.value).color
-    // Remove animation class
-    isRainbow.value = false
-    // Set inline color to current animated color
-    rainbowTitle.value.style.color = computedColor
-    // Force transition to white
-    setTimeout(() => {
-      rainbowTitle.value.style.color = '#ffffff'
-    }, 10)
-    // Remove inline color after transition
-    setTimeout(() => {
-      rainbowTitle.value.style.color = ''
-    }, 1100)
-  }
-}
-</script>
