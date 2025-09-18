@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import NavButtons from '../navbar/navbuttons.vue'
+import NavButtons from './navbuttons.vue'
 
 import { ref } from 'vue'
 

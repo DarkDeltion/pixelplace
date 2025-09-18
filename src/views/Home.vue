@@ -1,8 +1,9 @@
 <template>
   <!-- navbar -->
-  <nav class="navbar-wrapper">
-    <FullNavbar />
+  <nav>
+    <component :is="width > 750 ? DesktopNavbar : MobileNavbar" />
   </nav>
+
   <!-- main content -->
   <main>
     <LobbyInputs />
@@ -31,5 +32,24 @@ main {
 // components
 import LobbyInputs from '../components/lobby/lobbyinputs.vue'
 import LobbiesList from '../components/lobby/lobbieslist.vue'
-import FullNavbar from '../components/navbar/fullnavbar.vue'
+import DesktopNavbar from '../components/navbar/desktop/desktopnavbar.vue'
+import MobileNavbar from '../components/navbar/mobile/mobilenavbar.vue'
+
+
+import { ref, onMounted, onUnmounted } from 'vue'
+
+// track screen width
+const width = ref(window.innerWidth)
+
+const handleResize = () => {
+  width.value = window.innerWidth
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
