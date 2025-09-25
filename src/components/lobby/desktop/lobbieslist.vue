@@ -15,37 +15,35 @@
   </div>
 </template>
 
-<script setup></script>
-
 <style scoped>
 /* lobby list */
 .lobby-list {
   background: #b3b3b3;
   border: 3px solid #222;
-  border-radius: 16px;
-  padding: 1rem;
-  margin: 0 2rem;
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin: 0 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.2rem;
 }
 
 .lobby-item {
   background: #cfcfcf;
   border: 2px solid #222;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1rem;
-  font-size: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  font-size: 1.7rem;
 }
 
 .lobby-join-btn {
   font-family: 'Pixelify Sans', sans-serif;
-  font-size: 1.2rem;
-  padding: 0.3rem 1rem;
-  border-radius: 8px;
+  font-size: 1.3rem;
+  padding: 0.4rem 1.3rem;
+  border-radius: 9px;
   border: 2px solid #222;
   background: #b3b3b3;
   color: #222;
@@ -58,7 +56,7 @@
 }
 
 .lobby-lock {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-left: 0.5rem;
   margin-right: auto;
 }

@@ -31,7 +31,7 @@ function triggerRainbow() {
 <style scoped>
 .navbar {
   width: 100vw;
-  height: 90px;
+  height: 10vh;
   background-color: #282828;
   display: flex;
   align-items: center;
@@ -106,8 +106,7 @@ function triggerRainbow() {
     breathing 2.5s ease-in-out 1;
 }
 
-/* Extra mobile tweaks */
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .navbar {
     height: 48px;
     gap: 2vw;
@@ -115,5 +114,5 @@ function triggerRainbow() {
   .site-title h1 {
     font-size: clamp(1.2rem, 7vw, 2.2rem);
   }
-}
+} */
 </style>

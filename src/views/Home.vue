@@ -6,8 +6,7 @@
 
   <!-- main content -->
   <main>
-    <LobbyInputs />
-    <LobbiesList />
+    <component :is="width > 750 ? desktoplobbieslist : mobilelobbieslist" />
   </main>
 </template>
 
@@ -30,11 +29,10 @@ main {
 
 <script setup>
 // components
-import LobbyInputs from '../components/lobby/lobbyinputs.vue'
-import LobbiesList from '../components/lobby/lobbieslist.vue'
+import desktoplobbieslist from '../components/lobby/desktop/desktoplobbies.vue'
+import mobilelobbieslist from '../components/lobby/mobile/mobilelobbies.vue'
 import DesktopNavbar from '../components/navbar/desktop/desktopnavbar.vue'
 import MobileNavbar from '../components/navbar/mobile/mobilenavbar.vue'
-
 
 import { ref, onMounted, onUnmounted } from 'vue'
 

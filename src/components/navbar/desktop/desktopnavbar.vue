@@ -52,13 +52,7 @@ function stopRainbow() {
 }
 </script>
 
-<style scoped>
-/* media (max-width: 750px) {
-  .navbar {
-    display: none;
-  }
-} */
-
+<style>
 .navbar {
   width: 100vw;
   height: 125px;
@@ -71,7 +65,9 @@ function stopRainbow() {
   left: 0;
   top: 0;
 }
+</style>
 
+<style scoped>
 .site-title h1 {
   margin: 0;
   font-size: 4rem;

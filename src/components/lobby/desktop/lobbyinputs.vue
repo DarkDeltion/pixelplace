@@ -5,8 +5,6 @@
   </div>
 </template>
 
-<script setup></script>
-
 <style scoped>
 /* search bar */
 .search-bar {
@@ -14,31 +12,43 @@
   justify-content: space-between;
   align-items: center;
   margin: 2rem 2rem 1rem 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .search-bar input[type='search'] {
   font-family: 'Pixelify Sans', sans-serif;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  border: 2px solid #222;
+  font-size: 1.2em;
+  padding: 0.4em 1em;
+  border-radius: 0.7em;
+  border: 0.13em solid #222;
   background: #888;
   color: #fff;
   outline: none;
-  width: 300px;
+  width: 100%;
+  max-width: 18em;
+  min-width: 8em;
+  height: 2.5em;
+  box-sizing: border-box;
+  flex: 1 1 12em;
 }
 
 .search-bar a {
   font-family: 'Pixelify Sans', sans-serif;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  border: 2px solid #222;
+  font-size: 1.2em;
+  padding: 0.4em 1em;
+  border-radius: 0.7em;
+  border: 0.13em solid #222;
   background: #888;
   color: #fff;
   text-decoration: none;
   text-align: center;
   transition: background 0.2s;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  flex: 0 0 auto;
 }
 
 .search-bar a:hover {
