@@ -1,0 +1,51 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: pixelplace-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pixelplace
+      MYSQL_USER: pixeluser
+      MYSQL_PASSWORD: pixelpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pixelplace-phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8090:80"
+
+  backend:
+    build: ../PixelPlaceBackend
+    container_name: pixelplace-backend
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_USER: pixeluser
+      DB_PASS: pixelpass
+      DB_NAME: pixelplace
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: pixelplace-mailhog
+    restart: always
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+volumes:
+  db_data:
