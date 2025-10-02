@@ -1,27 +1,32 @@
-import { Router } from "express";
+// email.js
+import express from "express";
 import nodemailer from "nodemailer";
 
-const router = Router();
+const router = express.Router();
 
-router.get("/", async (req, res) => {
+const transporter = nodemailer.createTransport({
+  host: process.env.MAIL_HOST || "localhost",
+  port: process.env.MAIL_PORT || 1025,
+  secure: false,
+});
+
+router.post("/", async (req, res) => {
+  const { to, subject, text } = req.body;
+  if (!to || !subject || !text) return res.status(400).json({ error: "Missing fields" });
+
   try {
-    const transporter = nodemailer.createTransport({
-      host: "mailhog",   // must match your docker-compose service name
-      port: 1025,
-      secure: false
+    const info = await transporter.sendMail({
+      from: process.env.MAIL_FROM || '"Test" <test@example.com>',
+      to,
+      subject,
+      text,
     });
 
-    await transporter.sendMail({
-      from: "test@pixelplace.local",
-      to: "user@example.com",
-      subject: "Hello from PixelPlace!",
-      text: "This is a test email."
-    });
-
-    res.json({ message: "Test email sent to MailHog!" });
+    console.log("Email sent:", info);
+    res.json({ message: "Email sent successfully!", info });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to send email" });
+    console.error("Error sending email:", err);
+    res.status(500).json({ error: "Failed to send email", details: err.message });
   }
 });
 

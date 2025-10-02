@@ -1,11 +1,9 @@
-import { Router } from "express";
+import express from "express";
 
-const router = Router();
+const router = express.Router();
 
-// Simple GET test route
 router.get("/", (req, res) => {
-  console.log("✅ Test request received!");
-  res.json({ message: "Hello from PixelPlace backend!" });
+  res.json({ message: "Backend is working!" });
 });
 
 export default router;

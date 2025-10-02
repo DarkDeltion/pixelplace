@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   db:
     image: mysql:8.0
@@ -25,6 +27,13 @@ services:
     ports:
       - "8090:80"
 
+  mailhog:
+    image: mailhog/mailhog
+    container_name: pixelplace-mailhog
+    restart: always
+    ports:
+      - "8025:8025"
+
   backend:
     build: ../PixelPlaceBackend
     container_name: pixelplace-backend
@@ -34,18 +43,14 @@ services:
       DB_USER: pixeluser
       DB_PASS: pixelpass
       DB_NAME: pixelplace
+      MAIL_HOST: mailhog
+      MAIL_PORT: 1025
+      MAIL_FROM: test@pixelplace.local
     ports:
       - "3000:3000"
     depends_on:
       - db
-
-  mailhog:
-    image: mailhog/mailhog
-    container_name: pixelplace-mailhog
-    restart: always
-    ports:
-      - "8025:8025"
-      - "1025:1025"
+      - mailhog
 
 volumes:
   db_data:

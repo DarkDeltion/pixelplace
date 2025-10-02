@@ -1,21 +1,25 @@
-import express from "express";
-import cors from "cors";
-import emailRouter from "./routes/email.js";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+import testRoute from './routes/test.js';
+import emailRoute from './routes/email.js';
+
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
 
-app.use(cors());               // Allow frontend requests
-app.use(express.json());       // Parse JSON bodies
+app.use(cors({
+  origin: 'http://localhost:5173',  // your frontend
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+}));
+app.use(express.json());
 
-// Mount the email test route
-app.use("/api/email", emailRouter);
-
-// Health check route
-app.get("/api/health", (req, res) => {
-  res.json({ status: "Backend is running" });
-});
+app.use('/api/test', testRoute);
+app.use('/api/email', emailRoute);
 
 app.listen(PORT, () => {
-  console.log(`PixelPlace backend running on http://localhost:${PORT}`);
+  console.log(`Backend running on http://localhost:${PORT}`);
 });
